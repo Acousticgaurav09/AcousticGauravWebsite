@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Acoustic Gaurav — Music Portfolio"
+version = "1.0.0"
+id = "artifacts/acoustic-gaurav"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21948
+
+[services.development]
+run = "pnpm --filter @workspace/acoustic-gaurav run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/acoustic-gaurav", "run", "build" ]
+publicDir = "artifacts/acoustic-gaurav/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21948"
+BASE_PATH = "/"

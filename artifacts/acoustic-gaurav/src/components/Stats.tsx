@@ -1,0 +1,67 @@
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
+
+const stats = [
+  { value: 1000, suffix: "+", label: "Tracks Produced" },
+  { value: 15, suffix: "+", label: "States Reached" },
+  { value: 8, suffix: "+", label: "Years Experience" },
+  { value: 100, suffix: "%", label: "Client Satisfaction" },
+];
+
+function CountUp({ value, suffix }: { value: number; suffix: string }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (!inView) return;
+    let start = 0;
+    const duration = 1500;
+    const step = Math.ceil(value / (duration / 16));
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= value) {
+        setCount(value);
+        clearInterval(timer);
+      } else {
+        setCount(start);
+      }
+    }, 16);
+    return () => clearInterval(timer);
+  }, [inView, value]);
+
+  return (
+    <span ref={ref}>
+      {count.toLocaleString()}{suffix}
+    </span>
+  );
+}
+
+export default function Stats() {
+  return (
+    <section className="py-12 bg-black/5 border-y border-black/8" data-testid="stats-section">
+      <div className="max-w-5xl mx-auto px-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {stats.map((s, i) => (
+            <motion.div
+              key={s.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="text-center"
+              data-testid={`stat-${i}`}
+            >
+              <div className="text-3xl sm:text-4xl font-serif font-bold text-primary text-glow mb-1">
+                <CountUp value={s.value} suffix={s.suffix} />
+              </div>
+              <div className="text-xs tracking-widest uppercase text-muted-foreground font-sans">
+                {s.label}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
