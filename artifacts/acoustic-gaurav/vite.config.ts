@@ -57,6 +57,9 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    // Disable sourcemaps in production to avoid "Can't resolve original location"
+    // errors during Vite's sourcemap reporting and reduce artifact size.
+    sourcemap: false,
   },
   server: {
     port,
