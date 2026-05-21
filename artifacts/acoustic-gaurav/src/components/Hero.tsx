@@ -16,10 +16,15 @@ export default function Hero() {
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
       data-testid="hero-section"
     >
-      {/* Animated Background */}
+      {/* Animated Background + hero image */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#f4ede0] via-[#f8f2e6] to-[#ede3d0]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(122,52,16,0.08)_0%,transparent_60%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(160,86,26,0.10)_0%,transparent_60%)]" />
+      <div
+        className="absolute inset-0 bg-center bg-cover opacity-70"
+        style={{ backgroundImage: "url('/src/assets/images/studio-1.png')", transform: 'scale(1.03)' }}
+        aria-hidden
+      />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(122,52,16,0.08)_0%,transparent_60%)] mix-blend-overlay" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(160,86,26,0.10)_0%,transparent_60%)] mix-blend-overlay" />
 
       {/* Particles */}
       {[...Array(12)].map((_, i) => (
@@ -66,7 +71,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 2.0 }}
-          className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-serif font-black tracking-tight text-foreground leading-none mb-4 text-glow"
+          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-black tracking-tight text-foreground leading-tight mb-4 text-glow drop-shadow-lg"
         >
           ACOUSTIC
           <br />
@@ -107,7 +112,7 @@ export default function Hero() {
         >
           <button
             onClick={() => document.querySelector("#platforms")?.scrollIntoView({ behavior: "smooth" })}
-            className="px-8 py-3 bg-primary text-primary-foreground font-sans text-sm tracking-widest uppercase rounded hover:brightness-110 hover:shadow-[0_0_30px_rgba(201,168,76,0.4)] transition-all duration-300"
+            className="px-10 py-4 bg-primary text-primary-foreground font-sans text-base tracking-widest uppercase rounded-full shadow-xl hover:scale-105 transform-gpu transition-all duration-300"
             data-testid="btn-listen-now"
           >
             Listen Now

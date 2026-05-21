@@ -34,7 +34,7 @@ export default function Navbar() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-[#f8f2e6]/90 backdrop-blur-xl border-b border-[#7a3410]/12 shadow-lg"
+            ? "glass bg-opacity-95 border-b border-[#7a3410]/8 shadow-lg"
             : "bg-transparent"
         }`}
         data-testid="navbar"
@@ -46,7 +46,7 @@ export default function Navbar() {
             className="flex items-center gap-2 group"
             data-testid="nav-logo"
           >
-            <span className="text-xl font-serif font-bold tracking-widest text-primary group-hover:text-glow transition-all">
+            <span className="text-2xl font-serif font-bold tracking-widest text-primary group-hover:text-glow transition-all">
               AG
             </span>
             <span className="hidden sm:block text-xs tracking-[0.3em] uppercase text-muted-foreground font-sans">
@@ -70,7 +70,7 @@ export default function Navbar() {
             <li>
               <button
                 onClick={() => handleNav("#contact")}
-                className="text-sm px-4 py-1.5 rounded border border-primary/60 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 tracking-wider"
+                className="text-sm px-4 py-2 rounded-full border border-primary/60 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 tracking-wider shadow-sm"
                 data-testid="nav-cta"
               >
                 Hire Me
