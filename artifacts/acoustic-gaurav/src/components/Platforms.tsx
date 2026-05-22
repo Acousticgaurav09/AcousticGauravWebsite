@@ -70,7 +70,7 @@ export default function Platforms() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className={`flex items-center gap-3 px-6 py-3.5 glass rounded-xl border border-white/10 ${border} ${glow} transition-all duration-300 group`}
+              className={`relative z-10 flex items-center gap-3 px-6 py-3.5 glass rounded-xl border border-white/10 ${border} ${glow} transition-all duration-300 group`}
               data-testid={`platform-${name.toLowerCase().replace(" ", "-")}`}
             >
               <Icon size={22} style={{ color }} className="transition-transform group-hover:scale-110" />

@@ -29,7 +29,7 @@ export default function ListenHere() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="flex items-center gap-3 px-8 py-4 rounded-xl glass border border-white/10 hover:border-[#1DB954]/60 hover:shadow-[0_0_30px_rgba(29,185,84,0.35)] transition-all duration-300 group"
+              className="relative z-10 flex items-center gap-3 px-8 py-4 rounded-xl glass border border-white/10 hover:border-[#1DB954]/60 hover:shadow-[0_0_30px_rgba(29,185,84,0.35)] transition-all duration-300 group"
               data-testid="listen-spotify"
             >
               <SiSpotify size={26} className="text-[#1DB954] transition-transform group-hover:scale-110" />
@@ -48,7 +48,7 @@ export default function ListenHere() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="flex items-center gap-3 px-8 py-4 rounded-xl glass border border-white/10 hover:border-[#FA243C]/60 hover:shadow-[0_0_30px_rgba(250,36,60,0.35)] transition-all duration-300 group"
+              className="relative z-10 flex items-center gap-3 px-8 py-4 rounded-xl glass border border-white/10 hover:border-[#FA243C]/60 hover:shadow-[0_0_30px_rgba(250,36,60,0.35)] transition-all duration-300 group"
               data-testid="listen-apple-music"
             >
               <SiApplemusic size={26} className="text-[#FA243C] transition-transform group-hover:scale-110" />

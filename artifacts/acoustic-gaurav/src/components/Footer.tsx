@@ -52,7 +52,7 @@ export default function Footer() {
                 key={label}
                 href={href}
                 aria-label={label}
-                className="w-9 h-9 rounded-full glass border border-white/10 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/40 transition-all"
+                className="relative z-10 w-9 h-9 rounded-full glass border border-white/10 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/40 transition-all"
                 data-testid={`footer-social-${label.toLowerCase().replace(" ", "-")}`}
               >
                 <Icon size={15} />
