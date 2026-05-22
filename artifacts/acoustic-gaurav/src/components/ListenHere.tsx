@@ -4,7 +4,10 @@ import { SiSpotify, SiApplemusic } from "react-icons/si";
 export default function ListenHere() {
   return (
     <section className="py-20 relative overflow-hidden" data-testid="listen-here-section">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(122,52,16,0.07)_0%,transparent_70%)]" />
+      <div
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(122,52,16,0.07)_0%,transparent_70%)] pointer-events-none"
+        aria-hidden="true"
+      />
       <div className="max-w-4xl mx-auto px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

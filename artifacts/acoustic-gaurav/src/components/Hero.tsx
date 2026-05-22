@@ -23,8 +23,14 @@ export default function Hero() {
         style={{ backgroundImage: "url('/src/assets/images/studio-1.png')", transform: 'scale(1.03)' }}
         aria-hidden
       />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(122,52,16,0.08)_0%,transparent_60%)] mix-blend-overlay" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(160,86,26,0.10)_0%,transparent_60%)] mix-blend-overlay" />
+      <div
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(122,52,16,0.08)_0%,transparent_60%)] mix-blend-overlay pointer-events-none"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(160,86,26,0.10)_0%,transparent_60%)] mix-blend-overlay pointer-events-none"
+        aria-hidden="true"
+      />
 
       {/* Particles */}
       {[...Array(12)].map((_, i) => (

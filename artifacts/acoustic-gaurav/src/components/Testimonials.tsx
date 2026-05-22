@@ -25,7 +25,10 @@ const testimonials = [
 export default function Testimonials() {
   return (
     <section id="testimonials" className="py-28 relative" data-testid="testimonials-section">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(122,52,16,0.05)_0%,transparent_70%)]" />
+      <div
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(122,52,16,0.05)_0%,transparent_70%)] pointer-events-none"
+        aria-hidden="true"
+      />
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

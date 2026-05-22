@@ -11,7 +11,10 @@ const highlights = [
 export default function About() {
   return (
     <section id="about" className="py-28 relative overflow-hidden" data-testid="about-section">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(122,52,16,0.05)_0%,transparent_70%)]" />
+      <div
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(122,52,16,0.05)_0%,transparent_70%)] pointer-events-none"
+        aria-hidden="true"
+      />
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           {/* Left Visual */}

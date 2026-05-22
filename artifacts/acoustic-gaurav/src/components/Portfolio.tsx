@@ -23,7 +23,10 @@ export default function Portfolio() {
 
   return (
     <section id="portfolio" className="py-28 relative" data-testid="portfolio-section">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(201,168,76,0.04)_0%,transparent_60%)]" />
+      <div
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(201,168,76,0.04)_0%,transparent_60%)] pointer-events-none"
+        aria-hidden="true"
+      />
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -54,7 +57,7 @@ export default function Portfolio() {
                   alt={title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300" />
+                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300 pointer-events-none" />
                 {/* Play button overlay */}
                 <button
                   className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"

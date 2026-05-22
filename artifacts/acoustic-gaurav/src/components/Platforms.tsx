@@ -44,7 +44,10 @@ export default function Platforms() {
 
   return (
     <section id="platforms" className="py-28 relative" data-testid="platforms-section">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(201,168,76,0.03)_0%,transparent_70%)]" />
+      <div
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(201,168,76,0.03)_0%,transparent_70%)] pointer-events-none"
+        aria-hidden="true"
+      />
       <div className="max-w-5xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

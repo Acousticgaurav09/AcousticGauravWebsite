@@ -36,7 +36,10 @@ const setups = [
 export default function Studio() {
   return (
     <section id="studio" className="py-28 relative" data-testid="studio-section">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(122,52,16,0.06)_0%,transparent_60%)]" />
+      <div
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(122,52,16,0.06)_0%,transparent_60%)] pointer-events-none"
+        aria-hidden="true"
+      />
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

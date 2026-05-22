@@ -38,7 +38,10 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-28 relative" data-testid="contact-section">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(122,52,16,0.07)_0%,transparent_60%)]" />
+      <div
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(122,52,16,0.07)_0%,transparent_60%)] pointer-events-none"
+        aria-hidden="true"
+      />
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
