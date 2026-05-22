@@ -1,40 +1,14 @@
 import { motion } from "framer-motion";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { Mail, MessageCircle } from "lucide-react";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useToast } from "@/hooks/use-toast";
-
-const schema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Enter a valid email address"),
-  projectType: z.string().min(1, "Select a project type"),
-  budget: z.string().min(1, "Select a budget range"),
-  message: z.string().min(10, "Message must be at least 10 characters"),
-});
-
-type FormValues = z.infer<typeof schema>;
+import { Mail, MessageCircle, Phone } from "lucide-react";
+import { useState } from "react";
 
 const contactInfo = [
   { icon: Mail, label: "Business Email", value: "gauravonly99@gmail.com", href: "mailto:gauravonly99@gmail.com" },
+  { icon: Phone, label: "Phone", value: "+91 9873 818 281", href: "tel:+919873818281" },
 ];
 
 export default function Contact() {
-  const { toast } = useToast();
-  const form = useForm<FormValues>({
-    resolver: zodResolver(schema),
-    defaultValues: { name: "", email: "", projectType: "", budget: "", message: "" },
-  });
-
-  const onSubmit = (data: FormValues) => {
-    console.log(data);
-    toast({ title: "Message sent!", description: "Thank you! I'll get back to you within 24 hours." });
-    form.reset();
-  };
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   return (
     <section id="contact" className="py-28 relative" data-testid="contact-section">
@@ -63,128 +37,105 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
             className="glass rounded-2xl p-8 border border-black/10"
           >
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
-                <FormField
-                  control={form.control}
+            <form action="https://formspree.io/f/mvzyrojg" method="POST" className="space-y-5">
+              {/* Name */}
+              <div>
+                <label className="text-xs tracking-widest uppercase text-muted-foreground font-sans block mb-2">Name</label>
+                <input
+                  type="text"
                   name="name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-xs tracking-widest uppercase text-muted-foreground font-sans">Name</FormLabel>
-                      <FormControl>
-                        <Input
-                          {...field}
-                          placeholder="Your name"
-                          className="bg-black/4 border-black/12 focus:border-primary/50 text-foreground placeholder:text-muted-foreground/50"
-                          data-testid="input-name"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                  placeholder="Your name"
+                  required
+                  className="w-full px-4 py-2.5 bg-black/4 border border-black/12 focus:border-primary/50 text-foreground placeholder:text-muted-foreground/50 rounded focus:outline-none transition-colors"
+                  data-testid="input-name"
                 />
-                <FormField
-                  control={form.control}
+              </div>
+
+              {/* Email */}
+              <div>
+                <label className="text-xs tracking-widest uppercase text-muted-foreground font-sans block mb-2">Email</label>
+                <input
+                  type="email"
                   name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-xs tracking-widest uppercase text-muted-foreground font-sans">Email</FormLabel>
-                      <FormControl>
-                        <Input
-                          {...field}
-                          placeholder="your@email.com"
-                          type="email"
-                          className="bg-black/4 border-black/12 focus:border-primary/50 text-foreground placeholder:text-muted-foreground/50"
-                          data-testid="input-email"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                  placeholder="your@email.com"
+                  required
+                  className="w-full px-4 py-2.5 bg-black/4 border border-black/12 focus:border-primary/50 text-foreground placeholder:text-muted-foreground/50 rounded focus:outline-none transition-colors"
+                  data-testid="input-email"
                 />
-                <FormField
-                  control={form.control}
+              </div>
+
+              {/* Phone Number */}
+              <div>
+                <label className="text-xs tracking-widest uppercase text-muted-foreground font-sans block mb-2">Phone</label>
+                <input
+                  type="tel"
+                  name="phoneNumber"
+                  placeholder="Your phone number"
+                  className="w-full px-4 py-2.5 bg-black/4 border border-black/12 focus:border-primary/50 text-foreground placeholder:text-muted-foreground/50 rounded focus:outline-none transition-colors"
+                  data-testid="input-phone"
+                />
+              </div>
+
+              {/* Project Type */}
+              <div>
+                <label className="text-xs tracking-widest uppercase text-muted-foreground font-sans block mb-2">Project Type</label>
+                <select
                   name="projectType"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-xs tracking-widest uppercase text-muted-foreground font-sans">Project Type</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
-                        <FormControl>
-                          <SelectTrigger
-                            className="bg-black/4 border-black/12 focus:border-primary/50 text-foreground"
-                            data-testid="select-project-type"
-                          >
-                            <SelectValue placeholder="Select project type" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent className="bg-card border-black/10">
-                          <SelectItem value="music-production">Music Production</SelectItem>
-                          <SelectItem value="mixing-mastering">Mixing & Mastering</SelectItem>
-                          <SelectItem value="song-arrangement">Song Arrangement</SelectItem>
-                          <SelectItem value="vocal-production">Vocal Production</SelectItem>
-                          <SelectItem value="loop-creation">Loop Creation</SelectItem>
-                          <SelectItem value="full-album">Full Album Production</SelectItem>
-                          <SelectItem value="other">Other</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="budget"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-xs tracking-widest uppercase text-muted-foreground font-sans">Budget</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
-                        <FormControl>
-                          <SelectTrigger
-                            className="bg-black/4 border-black/12 focus:border-primary/50 text-foreground"
-                            data-testid="select-budget"
-                          >
-                            <SelectValue placeholder="Select budget range" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent className="bg-card border-black/10">
-                          <SelectItem value="under-5k">Under ₹5,000</SelectItem>
-                          <SelectItem value="5k-15k">₹5,000 – ₹15,000</SelectItem>
-                          <SelectItem value="15k-30k">₹15,000 – ₹30,000</SelectItem>
-                          <SelectItem value="30k-plus">₹30,000+</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-xs tracking-widest uppercase text-muted-foreground font-sans">Message</FormLabel>
-                      <FormControl>
-                        <Textarea
-                          {...field}
-                          placeholder="Tell me about your project..."
-                          rows={4}
-                          className="bg-white/5 border-white/10 focus:border-primary/50 text-foreground placeholder:text-muted-foreground/50 resize-none"
-                          data-testid="input-message"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <button
-                  type="submit"
-                  className="w-full py-3.5 bg-primary text-primary-foreground font-sans text-sm tracking-widest uppercase rounded hover:brightness-110 hover:shadow-[0_0_30px_rgba(201,168,76,0.4)] transition-all duration-300"
-                  data-testid="btn-submit"
+                  required
+                  className="w-full px-4 py-2.5 bg-black/4 border border-black/12 focus:border-primary/50 text-foreground rounded focus:outline-none transition-colors appearance-none cursor-pointer"
+                  data-testid="select-project-type"
                 >
-                  Send Message
-                </button>
-              </form>
-            </Form>
+                  <option value="">Select project type</option>
+                  <option value="music-production">Music Production</option>
+                  <option value="mixing-mastering">Mixing & Mastering</option>
+                  <option value="song-arrangement">Song Arrangement</option>
+                  <option value="vocal-production">Vocal Production</option>
+                  <option value="loop-creation">Loop Creation</option>
+                  <option value="full-album">Full Album Production</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              {/* Budget */}
+              <div>
+                <label className="text-xs tracking-widest uppercase text-muted-foreground font-sans block mb-2">Budget</label>
+                <select
+                  name="budget"
+                  required
+                  className="w-full px-4 py-2.5 bg-black/4 border border-black/12 focus:border-primary/50 text-foreground rounded focus:outline-none transition-colors appearance-none cursor-pointer"
+                  data-testid="select-budget"
+                >
+                  <option value="">Select budget range</option>
+                  <option value="under-5k">Under ₹5,000</option>
+                  <option value="5k-15k">₹5,000 – ₹15,000</option>
+                  <option value="15k-30k">₹15,000 – ₹30,000</option>
+                  <option value="30k-plus">₹30,000+</option>
+                </select>
+              </div>
+
+              {/* Message */}
+              <div>
+                <label className="text-xs tracking-widest uppercase text-muted-foreground font-sans block mb-2">Message</label>
+                <textarea
+                  name="message"
+                  placeholder="Tell me about your project..."
+                  required
+                  rows={4}
+                  className="w-full px-4 py-2.5 bg-white/5 border border-white/10 focus:border-primary/50 text-foreground placeholder:text-muted-foreground/50 rounded focus:outline-none transition-colors resize-none"
+                  data-testid="input-message"
+                />
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full py-3.5 bg-primary text-primary-foreground font-sans text-sm tracking-widest uppercase rounded hover:brightness-110 hover:shadow-[0_0_30px_rgba(201,168,76,0.4)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                data-testid="btn-submit"
+              >
+                {isSubmitting ? "Sending..." : "Send Message"}
+              </button>
+            </form>
           </motion.div>
 
           {/* Contact Info */}
