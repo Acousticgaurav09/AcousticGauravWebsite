@@ -31,15 +31,18 @@ function CountUp({ value, suffix }: { value: number; suffix: string }) {
   }, [inView, value]);
 
   return (
-    <span ref={ref}>
-      {count.toLocaleString()}{suffix}
+    <span ref={ref} className="inline-flex items-baseline gap-2">
+      <span className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-primary text-glow">
+        {count.toLocaleString()}
+      </span>
+      <span className="text-sm sm:text-base font-serif text-primary">{suffix}</span>
     </span>
   );
 }
 
 export default function Stats() {
   return (
-    <section className="py-12 bg-black/5 border-y border-black/8" data-testid="stats-section">
+    <section className="py-20 bg-black/5 border-y border-black/10" data-testid="stats-section">
       <div className="max-w-5xl mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((s, i) => (
@@ -52,10 +55,10 @@ export default function Stats() {
               className="text-center"
               data-testid={`stat-${i}`}
             >
-              <div className="text-3xl sm:text-4xl font-serif font-bold text-primary text-glow mb-1">
+              <div className="mb-1">
                 <CountUp value={s.value} suffix={s.suffix} />
               </div>
-              <div className="text-xs tracking-widest uppercase text-muted-foreground font-sans">
+              <div className="text-sm tracking-widest uppercase text-muted-foreground font-sans mt-1">
                 {s.label}
               </div>
             </motion.div>
