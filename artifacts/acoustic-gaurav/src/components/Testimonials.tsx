@@ -20,6 +20,24 @@ const testimonials = [
     author: "Sneha Kapoor",
     role: "Vocalist",
   },
+  {
+    quote:
+      "Fast turnaround and excellent direction — the arrangement suggestions completely transformed the song. Communication was clear and delivery was on time.",
+    author: "Rohit Singh",
+    role: "Music Producer",
+  },
+  {
+    quote:
+      "Worked with Gaurav for a vocal session — the coaching and comping were top-notch. The final vocal production added a professional polish I couldn't get elsewhere.",
+    author: "Meera Patel",
+    role: "Content Creator",
+  },
+  {
+    quote:
+      "Our band needed a fresh approach and he brought creative ideas that made the track stand out. Very collaborative and detail-oriented.",
+    author: "Sanjay Verma",
+    role: "Band Leader",
+  },
 ];
 
 export default function Testimonials() {
