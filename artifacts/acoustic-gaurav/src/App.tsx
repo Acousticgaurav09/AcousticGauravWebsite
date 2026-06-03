@@ -27,6 +27,7 @@ function App() {
         <LoadingScreen />
         <Navbar />
         <main className="min-h-[100dvh] w-full bg-background text-foreground selection:bg-primary/30">
+          <Hero />
           <Stats />
           <About />
           <Services />
