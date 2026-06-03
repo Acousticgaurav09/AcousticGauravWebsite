@@ -4,7 +4,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import LoadingScreen from "@/components/LoadingScreen";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Stats from "@/components/Stats";
 import About from "@/components/About";
 import Services from "@/components/Services";
 import ListenHere from "@/components/ListenHere";
@@ -28,7 +27,6 @@ function App() {
         <Navbar />
         <main className="min-h-[100dvh] w-full bg-background text-foreground selection:bg-primary/30">
           <Hero />
-          <Stats />
           <About />
           <Services />
           <ListenHere />
