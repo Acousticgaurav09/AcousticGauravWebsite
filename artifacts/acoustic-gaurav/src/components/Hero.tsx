@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
@@ -48,21 +48,8 @@ export default function Hero() {
         />
       ))}
 
-      {/* Bottom Waveform */}
-      <div className="absolute bottom-0 left-0 right-0 flex items-end justify-center gap-[3px] px-4 h-40 opacity-30">
-        {[...Array(BAR_COUNT)].map((_, i) => (
-          <div
-            key={i}
-            className="w-[3px] rounded-full bg-primary animate-waveform flex-shrink-0"
-            style={{
-              animationDelay: `${(i * 0.08) % 1.2}s`,
-              minHeight: "8px",
-            }}
-          />
-        ))}
-      </div>
-
       {/* Content */}
+
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
         <motion.p
           initial={{ opacity: 0, y: 10 }}
