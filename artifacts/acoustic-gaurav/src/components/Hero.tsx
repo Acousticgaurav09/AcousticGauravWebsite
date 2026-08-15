@@ -111,34 +111,6 @@ export default function Hero() {
           mixing, mastering, arrangement, and loop creation.
         </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 2.9 }}
-          className="flex flex-wrap items-center justify-center gap-4"
-        >
-          <button
-            onClick={() => document.querySelector("#platforms")?.scrollIntoView({ behavior: "smooth" })}
-            className="px-10 py-4 bg-primary text-primary-foreground font-sans text-base tracking-widest uppercase rounded-full shadow-xl hover:scale-105 transform-gpu transition-all duration-300"
-            data-testid="btn-listen-now"
-          >
-            Listen Now
-          </button>
-          <button
-            onClick={() => document.querySelector("#portfolio")?.scrollIntoView({ behavior: "smooth" })}
-            className="px-8 py-3 border border-foreground/30 text-foreground font-sans text-sm tracking-widest uppercase rounded hover:border-primary hover:text-primary transition-all duration-300"
-            data-testid="btn-view-portfolio"
-          >
-            View Portfolio
-          </button>
-          <button
-            onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
-            className="px-8 py-3 text-muted-foreground font-sans text-sm tracking-widest uppercase rounded hover:text-foreground transition-all duration-300"
-            data-testid="btn-contact"
-          >
-            Contact
-          </button>
-        </motion.div>
       </div>
 
       {/* Scroll Indicator */}
