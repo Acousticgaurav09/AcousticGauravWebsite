@@ -42,7 +42,7 @@ function CountUp({ value, suffix }: { value: number; suffix: string }) {
 
 export default function Stats() {
   return (
-    <section className="py-10 bg-[#f4ede0]" data-testid="stats-section">
+    <section className="py-10 bg-[#101827]" data-testid="stats-section">
       <div className="max-w-5xl mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((s, i) => (

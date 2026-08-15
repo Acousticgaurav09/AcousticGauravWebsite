@@ -34,7 +34,7 @@ export default function Navbar() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "glass bg-opacity-95 border-b border-[#7a3410]/8 shadow-lg"
+            ? "glass bg-opacity-95 border-b border-[#f4b76e]/15 shadow-lg"
             : "bg-transparent"
         }`}
         data-testid="navbar"
@@ -95,7 +95,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-[#f8f2e6]/97 backdrop-blur-xl flex flex-col items-center justify-center gap-8"
+            className="fixed inset-0 z-40 bg-[#0f172a]/97 backdrop-blur-xl flex flex-col items-center justify-center gap-8"
             data-testid="mobile-menu"
           >
             {links.map((link, i) => (

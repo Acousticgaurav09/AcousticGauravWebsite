@@ -17,18 +17,18 @@ export default function Hero() {
       data-testid="hero-section"
     >
       {/* Animated Background + hero image */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#f4ede0] via-[#f8f2e6] to-[#ede3d0]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0f172a] via-[#162337] to-[#1b2940]" />
       <div
         className="absolute inset-0 bg-center bg-cover opacity-70"
         style={{ backgroundImage: "url('/src/assets/images/studio-1.png')", transform: 'scale(1.03)' }}
         aria-hidden
       />
       <div
-        className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(122,52,16,0.08)_0%,transparent_60%)] mix-blend-overlay pointer-events-none"
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(244,183,110,0.10)_0%,transparent_60%)] mix-blend-overlay pointer-events-none"
         aria-hidden="true"
       />
       <div
-        className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(160,86,26,0.10)_0%,transparent_60%)] mix-blend-overlay pointer-events-none"
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(45,212,191,0.12)_0%,transparent_60%)] mix-blend-overlay pointer-events-none"
         aria-hidden="true"
       />
 
